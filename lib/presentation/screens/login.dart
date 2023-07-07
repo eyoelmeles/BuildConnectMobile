@@ -1,3 +1,4 @@
+import 'package:build_connect_mobile/presentation/screens/daily_report/daily_report_form.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _login() async {
+  void _login(BuildContext context) async {
     String phoneNumber = _phoneNumberController.text;
     String password = _passwordController.text;
 
@@ -52,6 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         // Login failed
         print('Login failed. Status code: ${response.statusCode}');
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const DailyReportForm()));
       }
     } catch (e) {
       print('Error occurred: $e');
@@ -97,13 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 16.0),
-                  // TextField(
-                  //   controller: _passwordController,
-                  //   obscureText: true,
-                  //   decoration: const InputDecoration(
-                  //     labelText: 'Password',
-                  //   ),
-                  // ),
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
@@ -122,13 +118,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: _login,
-                      child: const Text('Login'),
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DailyReportForm()))
+                      },
                       style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(4)))),
+                      child: const Text('Login'),
                     ),
                   ),
                 ],

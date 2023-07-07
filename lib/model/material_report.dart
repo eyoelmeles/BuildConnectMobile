@@ -1,17 +1,15 @@
-class WorkProgress {
-  String typeOfWork;
-  String location;
-  String quantity;
+class MaterialReport {
+  String type;
   String unit;
-  String remark;
+  String delivered;
+  DateTime toDate;
   bool isExpanded;
 
-  WorkProgress({
-    required this.typeOfWork,
-    required this.location,
+  MaterialReport({
+    required this.type,
     required this.unit,
-    required this.quantity,
-    required this.remark,
+    required this.delivered,
+    required this.toDate,
     this.isExpanded = false,
   });
 }
