@@ -1,7 +1,5 @@
 import 'package:build_connect_mobile/presentation/screens/daily_report/weather_step.dart';
 import 'package:flutter/material.dart';
-import 'package:build_connect_mobile/model/material_report.dart';
-import '../../../model/work_progress.dart';
 
 class DailyReportForm extends StatefulWidget {
   const DailyReportForm({super.key});
@@ -12,9 +10,6 @@ class DailyReportForm extends StatefulWidget {
 
 class _DailyReportFormState extends State<DailyReportForm> {
   int _currentStep = 0;
-  String _weather = 'Sunny';
-  List<MaterialReport> _materialReportList = [];
-  List<WorkProgress> _workProgress = [];
 
   List<Step> _getSteps() {
     return [
